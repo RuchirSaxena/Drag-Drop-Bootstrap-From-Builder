@@ -3,6 +3,7 @@ A basic drag drop form builder that is based on bootstrap 3 , further it generat
 
 - Drag and Drop Elements and get HTML.
 - Get the json for from elements
+- Working on further functionalities like setting properties of controls , Preview of from etc....
 
 ### Based on below git repositoary 
 
