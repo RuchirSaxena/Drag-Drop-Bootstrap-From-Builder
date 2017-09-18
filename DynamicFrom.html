@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery.ui.theme.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css" />
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.ui.min.js"></script>
+	<script src="js/lodash.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/beautifyhtml.js"></script>
+	<script src="js/jquery.tmpl.js"></script>
+    <script src="FormBuilder/form.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+   
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+   
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed" role="navigation">
+		
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Dynamic From</a>
+		</div>
+    </nav>
+   <div class="container" id="divFrom">
+   
+   </div>
+</body>
+</html>
+<!--
+    Below is the template for textbox
+-->
+<script id="textboxTemplate" type="text/x-jquery-tmpl">
+    <div class="form-group">
+        <label for="input-text-1">${label}</label>
+        <input type="text" class="form-control" id="${controlId}" placeholder="${placeholder}">
+    </div>
+</script>
+<!--
+    Below is the complete template for dropdown 
+    along with its with its options =>optionsTemplate
+    and also the selected item functionality 
+-->
+<script id="dropdownTemplate" type="text/x-jquery-tmpl">
+    <div class="form-group">
+        <label for="select-1">${label}</label>
+        <select class="form-control" id="${controlId}">
+            <option value="" selected="selected">Select</option>
+            {{tmpl(options,{selectedId:selectedOption}) "#optionsTemplate"}} 
+        </select>
+    </div>
+</script>
+<script id="optionsTemplate" type="text/x-jquery-tmpl">
+    <option 
+    {{if key === $item.selectedId}}
+    selected="selected"
+    {{/if}} 
+    value="${key}">${value}</option>
+</script> 
+
+<!--
+    Template for radio
+-->
+<script id="radioTemplate" type="text/x-jquery-tmpl">
+<div class="form-group" data-type="Radio">
+        <label class="control-label" for="multipleradios-0">${label}</label>
+        <div class="controls">
+            {{tmpl(options,{selectedId:selectedOption}) "#radiooptionsTemplate"}}    
+        </div>
+</div>
+</script>
+<script id="radiooptionsTemplate" type="text/x-jquery-tmpl">
+    <label class="radio" for="${key}">
+            <input type="radio" name="multipleradios-0" id="${key}"
+            value="${key}"
+            {{if key === $item.selectedId}}
+             checked="checked"
+             {{/if}}
+             > 
+             ${value}
+          </label>
+</script> 
+<!--
+    Template for datetimepicker
+-->
+<script id="datetimepickerTemplate" type="text/x-jquery-tmpl">
+<div class="form-group">
+        <label for="input-text-1">${label}</label>
+        <div class='input-group date' id="${controlId}">
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+</div>
+</script>
+
+<script id="tableTemplate" type="text/x-jquery-tmpl">
+    <div class="form-group" data-type="Table">
+            <label for="table-file-1">${label}</label>
+            <table border="1">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                  
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+</script>
+
+

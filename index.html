@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+	 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Form Builder</title>
+	<link rel="stylesheet" href="css/jquery.ui.theme.css" />
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.ui.min.js"></script>
+	<script src="js/lodash.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/beautifyhtml.js"></script>
+	<script src="js/jquery.tmpl.js"></script>
+	<script type="text/x-jquery-tmpl" src="templates.html"></script>
+
+	<style>
+		.droppable-active {
+			background-color: #ffe !important;
+		}
+		.tools a {
+			cursor: pointer;
+			font-size: 80%;
+		}
+		.form-body .col-md-6,
+		.form-body .col-md-12 {
+			min-height: 400px;
+		}
+		.draggable {
+			cursor: move;
+		}
+	</style>
+  	<script src="FormBuilder/main.js"></script>
+
+</head>
+
+<body style="background-color: #ddd;">
+	<nav class="navbar navbar-default navbar-fixed" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Form Builder</a>
+		</div>
+		<form class="navbar-form navbar-left">
+			<!-- <div class="form-group">
+				<select class="form-control" id="n-columns">
+				<option value="1">1 Column</option>
+				<option value="2">2 Columns</option>
+			</select>
+			</div> -->
+			<!-- <button type="submit" class="btn btn-primary" data-clipboard-text="testing" id="copy-to-clipboard">Preview Form </button> -->
+			<a href="/DynamicFrom.html" class="btn-info" >Preview From</a>
+		</form>
+	</nav>
+	<div style="margin-top: -20px;">
+		<div class="row">
+			<div class="col-md-3" style="padding: 0px 30px 30px 30px; background-color: #fff;">
+				<h3>Elements</h3>
+				<form role="form">
+					<!--TextBox-->
+					<div class="form-group draggable" data-type="TextBox">
+						<label for="input-text-1">Text Input</label>
+						<input type="text" class="form-control" id="input-id-1" placeholder="Enter text">
+						<p class="help-block">Example block-level help text here.</p>
+					</div>
+					<hr>
+					<!--Radio-->
+					<div class="form-group draggable" data-type="Radio">
+						<label class="control-label" for="multipleradios-0">Multiple Radios</label>
+						<div class="controls">
+							<label class="radio" for="multipleradios-0-0">
+								<input type="radio" name="multipleradios-0" id="multipleradios-0-0" value="Option one" checked="checked">
+								Option one
+							  </label>
+							<label class="radio" for="multipleradios-0-1">
+								<input type="radio" name="multipleradios-0" id="multipleradios-0-1" value="Option two">
+								Option two
+							</label>
+						</div>
+					</div>
+					<hr>
+					<!--Label-->
+					<div class="from-group draggable" data-type="Label">
+						<label for="multipleradios-0-0">Label Control</label>
+					</div>
+					<hr>
+					<!--DropDown-->
+					<div class="form-group draggable"  data-type="DropDown">
+						<label for="select-1">Select</label>
+						<select class="form-control" id="select-1">
+							<option value="Option 1">Option 1</option>
+							<option value="Option 2">Option 2</option>
+							<option value="Option 3">Option 3</option>
+						</select>
+						<p class="help-block">Example block-level help text here.</p>
+					</div>
+					<hr>
+					<!--Calender-->
+					<div class="form-group draggable" data-type="Calender">
+						<label for="input-text-1">Calender Control</label>
+					
+							<input type='text' disabled="disabled"  class="form-control"  id='input-text-1' />
+							<span >
+								<span class="glyphicon glyphicon-calendar">
+								</span>
+							</span>
+					
+						<p class="help-block">Example block-level help text here.</p>
+					</div>
+					<!--Table-->
+					<div class="form-group draggable" data-type="Table">
+						<label for="table-file-1">Table</label>
+						<table border="1" style="height:100px;width:130px">
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-6" style="padding: 30px;">
+				<div style="background-color: #fff; border-radius: 5px; padding: 20px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);">
+					<div class="text-muted empty-form text-center" style="font-size: 24px;">Drag & Drop elements to build form.</div>
+					<div class="row form-body">
+						<div class="col-md-12 droppable sortable">
+						</div>
+						<div class="col-md-6 droppable sortable" style="display: none;">
+						</div>
+						<div class="col-md-6 droppable sortable" style="display: none;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3" style="padding: 0px 30px 30px 30px; background-color: #fff;min-height: 750px;">
+					<h3>Properties</h3>
+					<br/>
+					<div id="Properties">
+						This is porperty tab
+					</div>
+					<hr>
+					<div id="data">
+						 <button  id="btnSaveProperties" class="btn btn-primary">Save Properties</button>
+						 <input type="hidden" id="hdnSelectedControlType" value="">
+						<input type="hidden" id="hdnSelectedControlId" value="">
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script id="textboxPropertiesTemplate" type="text/x-jquery-tmpl">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Label Text</label>
+        <input type="email" class="form-control" id="txtLabelText" placeholder="Enter text for label">
+    </div>
+</script>

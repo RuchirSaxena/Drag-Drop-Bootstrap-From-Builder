@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch with live server",
+            "url": "http://127.0.0.1:4500",
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceRoot}/index.html",
+            "sourceMaps": true,
+            "name": "Launch with index page",
+            "webRoot": "${workspaceRoot}"
+        }
+    ]
+}
