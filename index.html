@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-	 <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Form Builder</title>
 	<link rel="stylesheet" href="css/jquery.ui.theme.css" />
 	<link rel="stylesheet" href="css/bootstrap.css" />
@@ -19,19 +20,22 @@
 		.droppable-active {
 			background-color: #ffe !important;
 		}
+
 		.tools a {
 			cursor: pointer;
 			font-size: 80%;
 		}
+
 		.form-body .col-md-6,
 		.form-body .col-md-12 {
 			min-height: 400px;
 		}
+
 		.draggable {
 			cursor: move;
 		}
 	</style>
-  	<script src="FormBuilder/main.js"></script>
+	<script src="FormBuilder/main.js"></script>
 
 </head>
 
@@ -49,7 +53,7 @@
 			</select>
 			</div> -->
 			<!-- <button type="submit" class="btn btn-primary" data-clipboard-text="testing" id="copy-to-clipboard">Preview Form </button> -->
-			<a href="/DynamicFrom.html" class="btn-info" >Preview From</a>
+			<a href="/DynamicFrom.html" class="btn-info">Preview From</a>
 		</form>
 	</nav>
 	<div style="margin-top: -20px;">
@@ -85,7 +89,7 @@
 					</div>
 					<hr>
 					<!--DropDown-->
-					<div class="form-group draggable"  data-type="DropDown">
+					<div class="form-group draggable" data-type="DropDown">
 						<label for="select-1">Select</label>
 						<select class="form-control" id="select-1">
 							<option value="Option 1">Option 1</option>
@@ -98,13 +102,13 @@
 					<!--Calender-->
 					<div class="form-group draggable" data-type="Calender">
 						<label for="input-text-1">Calender Control</label>
-					
-							<input type='text' disabled="disabled"  class="form-control"  id='input-text-1' />
-							<span >
+
+						<input type='text' disabled="disabled" class="form-control" id='input-text-1' />
+						<span>
 								<span class="glyphicon glyphicon-calendar">
 								</span>
-							</span>
-					
+						</span>
+
 						<p class="help-block">Example block-level help text here.</p>
 					</div>
 					<!--Table-->
@@ -147,25 +151,61 @@
 				</div>
 			</div>
 			<div class="col-md-3" style="padding: 0px 30px 30px 30px; background-color: #fff;min-height: 750px;">
+				<div class="row">
 					<h3>Properties</h3>
 					<br/>
-					<div id="Properties">
-						This is porperty tab
-					</div>
+					<form role="form" id="Properties">
+						<!--
+						Controls properties will come here using jquery template engine
+					-->
+					</form>
 					<hr>
-					<div id="data">
-						 <button  id="btnSaveProperties" class="btn btn-primary">Save Properties</button>
-						 <input type="hidden" id="hdnSelectedControlType" value="">
+					<div id="data" class="pull-right">
+						<button id="btnSaveProperties" class="btn btn-primary">Save Properties</button>
+						<input type="hidden" id="hdnSelectedControlType" value="">
 						<input type="hidden" id="hdnSelectedControlId" value="">
 					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	</div>
 </body>
+
 </html>
 <script id="textboxPropertiesTemplate" type="text/x-jquery-tmpl">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Label Text</label>
-        <input type="email" class="form-control" id="txtLabelText" placeholder="Enter text for label">
-    </div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Label Text</label>
+		<input type="text" class="form-control" id="txtLabelText" placeholder="Enter text for label">
+	</div>
+</script>
+<script id="dropdownPropertiesTemplate" type="text/x-jquery-tmpl">
+	<div>
+		<div class="form-group " data-type="DropDown">
+			<label for="select-1">Select Type:</label>
+			<select class="form-control" id="select-1" onchange="showAutoFillContainer(this)">
+					<option value="Select">Select</option> 
+					<option value="AlphaNumeric">AlphaNumeric</option> 
+					<option value="Numeric">Numeric</option>     
+					<option value="Date">Date</option>       
+					<option value="Boolean">Boolean</option>  
+					<option value="Decimal">Decimal</option> 
+			</select>
+
+		</div>
+		<div id="divAutofillSection" style="display:none;">
+			<div class="form-group" data-type="DropDown">
+				<input type="text" class="form-control" id="txtAutoFillValues" placeholder="Enter Autofill value">
+			</div>
+			<div class="form-group" data-type="DropDown">
+				<input type="button" class="btn btn-info" value="ADD">
+			</div>
+			<div class="form-group " data-type="DropDown">
+				<label for="select-1">Autofill Values</label>
+				<select class="form-control" id="select-1">
+				</select>
+			</div>
+		</div>
+
+	</div>
 </script>

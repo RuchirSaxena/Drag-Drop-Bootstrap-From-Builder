@@ -242,7 +242,7 @@ function getControlProperties(type) {
             html = getTextBox();
             break;
         case "DropDown":
-            html = "This is DropDown";
+            html = getDropdown();
             break;
         case "Calender":
             html = "This is Calender";
@@ -273,10 +273,15 @@ function getTextBox() {
     return html;
 }
 
+function getDropdown(){
+    debugger;
+    var html = $("#dropdownPropertiesTemplate").tmpl().html();
+    return html;
+}
+
 var savedControlJson = [
     //TextBox
     {
-       
         controlType: "TextBox",
         controlProperties: {
              controlId: 890,
@@ -286,9 +291,9 @@ var savedControlJson = [
     },
     //DropDown
     {
-        controlId: 789,
         controlType: "DropDown",
         controlProperties: {
+            controlId: 789,
             label: "select department",
             options: [{
                     Key: "0",
@@ -307,9 +312,9 @@ var savedControlJson = [
     },
     //Radio button
     {
-        controlId: 790,
         controlType: "Radio",
         controlProperties: {
+            controlId: 790,
             label: "select department",
             options: [{
                     Key: "0",
@@ -328,27 +333,28 @@ var savedControlJson = [
     },
     //label
     {
-        controlId: 791,
         controlType: "Label",
         controlProperties: {
+            controlId: 791,
             label: "Department",
             value: "HR Department"
         }
     },
     //Calender
     {
-        controlId: 792,
+      
         controlType: "Calender",
         controlProperties: {
+            controlId: 792,
             label: "Select Date",
             format: "dd-mm-yy",
         }
     },
     //Table
     {
-        controlId: 793,
         controlType: "Table",
         controlProperties: {
+            controlId: 793,
             label: "Data Table",
             options: [{
                     columnHeader: "Employee Name",
@@ -390,3 +396,15 @@ $(document).ready(function () {
         localStorage.setItem("FromData", JSON.stringify(savedControlJson));
     });
 });
+
+function showAutoFillContainer(element) {
+    var seletedDataType=$("showAutoFillContainer").val();
+    var divAutofillSection= $("#divAutofillSection");
+    if(seletedDataType!=="Select"){
+        divAutofillSection.show();
+    }else{
+        divAutofillSection.hide();
+        
+    }
+    
+}

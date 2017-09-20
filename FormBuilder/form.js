@@ -9,12 +9,11 @@ $(document).ready(function () {
     };
 
     var dropDown={
-       
         controlType: "DropDown",
         controlProperties: {
             controlId: 789,
             label: "Select Department",
-            selectedOption:"2",
+            selectedOption:"",
             options: [{
                     key: "0",
                     value: "HR"
@@ -35,19 +34,19 @@ $(document).ready(function () {
         controlType: "Radio",
         controlProperties: {
             controlId: 790,
-            label: "Select Department",
-            selectedOption:"2",
+            label: "Marital Status",
+            selectedOption:"",
             options: [{
                     key: "0",
-                    value: "HR"
+                    value: "Married"
                 },
                 {
                     key: "1",
-                    value: "IT"
+                    value: "Not Married"
                 },
                 {
                     key: "2",
-                    value: "Finance"
+                    value: "Others"
                 }
             ]
         }
@@ -57,7 +56,7 @@ $(document).ready(function () {
         controlType: "Calender",
         controlProperties: {
             controlId: 792,
-            label: "Select Date",
+            label: "Date Of Joining",
             format: "dd-mm-yy",
         }
     };
@@ -81,7 +80,6 @@ $(document).ready(function () {
                     columControl:"Textbox"
                 }
             ]
-
         }
     }
 
@@ -89,12 +87,12 @@ $(document).ready(function () {
     $("#textboxTemplate").tmpl(textBox).appendTo("#divFrom");
     $("#dropdownTemplate").tmpl(dropDown.controlProperties).appendTo("#divFrom");
     $("#radioTemplate").tmpl(radio.controlProperties).appendTo("#divFrom");
-    $("#datetimepickerTemplate").tmpl(radio.controlProperties).appendTo("#divFrom");
+    $("#datetimepickerTemplate").tmpl(calendar.controlProperties).appendTo("#divFrom");
     setDateTimePicker();
 
     function setDateTimePicker(id,dateFormat) {
         //alert("in");  $('#datetimepicker5').datetimepicker({
-        $("#790").datetimepicker();
+        $("#792").datetimepicker();
          /*    {
             defaultDate: dateFormat,
         }); */
