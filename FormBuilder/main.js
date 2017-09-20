@@ -268,16 +268,17 @@ var controlsHtml = {
 };
 
 //$("#textboxPropertiesTemplate").tmpl(data).appendTo("#divTemplateContainer");
-function getTextBox() {
-    var html = $("#textboxPropertiesTemplate").tmpl().html();
-    return html;
-}
-
 function getDropdown(){
     debugger;
     var html = $("#dropdownPropertiesTemplate").tmpl().html();
     return html;
 }
+
+function getTextBox() {
+    var html = $("#textboxPropertiesTemplate").tmpl().html();
+    return html;
+}
+
 
 var savedControlJson = [
     //TextBox
@@ -372,14 +373,12 @@ var savedControlJson = [
                     columnHeader: "Employee Marital Status",
                     columnControl: "Radio"
                 }
-
             ]
         }
     }
 ];
 $(document).ready(function () {
     $('#btnSaveProperties').on('click', function () {
-
         var selectedControlType = $('#hdnSelectedControlType').val();
         var selectedControlId = $('#hdnSelectedControlId').val();
         var controlData = {};
@@ -398,13 +397,11 @@ $(document).ready(function () {
 });
 
 function showAutoFillContainer(element) {
-    var seletedDataType=$("showAutoFillContainer").val();
+    var seletedDataType=$(element).val();
     var divAutofillSection= $("#divAutofillSection");
     if(seletedDataType!=="Select"){
         divAutofillSection.show();
     }else{
         divAutofillSection.hide();
-        
     }
-    
 }
