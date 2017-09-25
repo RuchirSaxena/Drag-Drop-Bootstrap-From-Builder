@@ -78,6 +78,10 @@ $(document).ready(function () {
                 {
                     columHeader:"Emplyee Name",
                     columControl:"Textbox"
+                },
+                {
+                    columHeader:"Employee DOB",
+                    columControl:"DateTime"
                 }
             ]
         }
@@ -97,6 +101,7 @@ $(document).ready(function () {
             defaultDate: dateFormat,
         }); */
     }
-    
-   
+
+  
+
 });
